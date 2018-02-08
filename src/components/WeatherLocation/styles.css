@@ -8,6 +8,7 @@
     box-sizing: border-box;
     font-family: 'Ubuntu';
     box-shadow: 10px 10px 39px -6px rgba(0,0,0,0.75);
+    cursor: pointer;
 }
 .locationCont
 {

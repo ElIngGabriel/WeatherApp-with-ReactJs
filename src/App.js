@@ -14,22 +14,31 @@ const cities = [
 
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      city: null
+    };
+  }
   handleSelectedLocation = city =>
   {
+    this.setState({city: city});
     console.log(`handleSelectedLocation ${city}`);
 
   }
   render() {
+    const {city} = this.state;
     return (
       <MuiThemeProvider>
         <Grid>
           <Row>
             <Col xs={12}>
-                <AppBar title="Titulo"/>
+                <AppBar title="Weather App"/>
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md-={6}>
+            <Col xs={12} md={6}>
               <LocationList 
                 cities={cities} 
                 onSelectedLocationClick={this.handleSelectedLocation}
@@ -38,7 +47,11 @@ class App extends Component {
             <Col xs={12} md={6}>
               <Paper zDepth={4}>
               <div className="detail">
-                <ForecastExtendend/>
+                {
+                  !city ? 
+                    <h1> No se selecciono ciudad</h1> :
+                      <ForecastExtendend city={city}></ForecastExtendend>
+                }
               </div>
               </Paper>
             </Col>
