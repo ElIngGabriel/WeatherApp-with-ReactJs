@@ -3,15 +3,17 @@ import {Grid, Row, Col } from 'react-flexbox-grid';
 import Paper from 'material-ui/Paper'
 import AppBar from 'material-ui/AppBar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import LocationList from './components/LocationList'
+import LocationListContainer from './containers/LocationListContainer'
 import ForecastExtendend from './components/ForecastExtendend'
-
 import './App.css';
 
 const cities = [
 'Ciudad de México,mx',
-'Japan,jp'];
+'Japan,jp'
+];
 
+
+    
 
 class App extends Component {
 
@@ -21,12 +23,7 @@ class App extends Component {
       city: null
     };
   }
-  handleSelectedLocation = city =>
-  {
-    this.setState({city: city});
-    console.log(`handleSelectedLocation ${city}`);
-
-  }
+  
   render() {
     const {city} = this.state;
     return (
@@ -39,9 +36,8 @@ class App extends Component {
           </Row>
           <Row>
             <Col xs={12} md={6}>
-              <LocationList 
-                cities={cities} 
-                onSelectedLocationClick={this.handleSelectedLocation}
+              <LocationListContainer 
+                cities={cities}  
               />
             </Col>
             <Col xs={12} md={6}>
@@ -61,5 +57,10 @@ class App extends Component {
     );
   }
 }
+
+
+//const AppConnected = connect(null, mapDispatchToPropsActions) (App);
+
+//export default AppConnected; 
 
 export default App;
